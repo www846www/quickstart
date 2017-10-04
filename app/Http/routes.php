@@ -8,11 +8,14 @@ Route::group(['middleware' => 'web'], function () {
     /**
      * 顯示所有任務
      */
-    Route::get('/', function () {
-
-        return view('tasks');
+     Route::get('/', function () {
+        $tasks = Task::orderBy('created_at', 'asc')->get();
+    
+        return view('tasks', [
+            'tasks' => $tasks
+        ]);
     });
-
+    
     /**
      * 增加新的任務
      */
