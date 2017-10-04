@@ -38,12 +38,11 @@ Route::group(['middleware' => 'web'], function () {
         return redirect('/');
     
     });
-    
-
     /**
      * 刪除任務
      */
-    Route::delete('/task/{task}', function (Task $task) {
-        //
+     Route::delete('/task/{task}', function (Task $task) {
+        $task->delete();
+        return redirect('/');
     });
 });
